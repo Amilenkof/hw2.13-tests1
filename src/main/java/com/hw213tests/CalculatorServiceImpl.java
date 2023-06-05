@@ -27,13 +27,14 @@ public class CalculatorServiceImpl implements CalculatorService {
     @Override
     public String divide(int num1, int num2) {
         if (num2==0) {
-            throw  new DivideOnNullExpection("Деление на ноль");
+            throw  new IllegalArgumentException("Деление на ноль");
         }
-        return String.format(" %s/%s=%.2f",num1,num2,(double)(num1/num2));
+        double res =(double) num1 / (double) num2;
+        return String.format("%s/%s=%.2f",num1,num2,res);
     }
     @Override
     public String multuply(int num1, int num2) {
-        return String.format(" %s*%s=%.2f",num1,num2,(double)(num1*num2));
+        return String.format("%s*%s=%.2f",num1,num2,(double)(num1*num2));
     }
 
 }
