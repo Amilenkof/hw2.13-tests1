@@ -1,5 +1,6 @@
 package com.hw213tests;
 
+import com.hw213tests.exeptions.DivideOnNullExpection;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,14 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public String divide(int num1, int num2) {
+        if (num2==0) {
+            throw  new DivideOnNullExpection("Деление на ноль");
+        }
         return String.format(" %s/%s=%.2f",num1,num2,(double)(num1/num2));
     }
     @Override
     public String multuply(int num1, int num2) {
         return String.format(" %s*%s=%.2f",num1,num2,(double)(num1*num2));
     }
+
 }
